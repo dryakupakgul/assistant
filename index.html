@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Yakup Akgül - Executive Interview Assistant</title>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState } = React;
+const Send = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>;
+const User = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>;
+const Bot = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8" y2="16"></line><line x1="16" y1="16" x2="16" y2="16"></line></svg>;
+const Briefcase = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>;
+const Award = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>;
+const TrendingUp = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>;
+const Users = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>;
+
+const HRInterviewInterface = () => {
+const [messages, setMessages] = useState([
+{
+type: 'bot',
+text: "Hello! I'm Dr. Yakup Akgül's Executive Interview Assistant. I can answer questions about his experience, achievements, and qualifications for senior leadership roles in CRM, Loyalty, Digital Banking, and Customer Analytics. What would you like to know?"
+}
+]);
+const [input, setInput] = useState('');
+const [isTyping, setIsTyping] = useState(false);
+
+const quickQuestions = [
+{ icon: Briefcase, text: "What are your key achievements in retail banking, CRM and loyalty?" },
+{ icon: TrendingUp, text: "Describe your experience with revenue growth and market share." },
+{ icon: Users, text: "Tell me about your leadership and team management experience." },
+{ icon: Award, text: "What makes you qualified for an executive role?" }
+];
+
+const generateResponse = (question) => {
+const q = question.toLowerCase();
+
+if (q.includes('retail banking') && (q.includes('crm') || q.includes('loyalty')) ||
+(q.includes('achievement') && q.includes('retail') && q.includes('crm')) ||
+(q.includes('achievement') && q.includes('retail') && q.includes('loyalty'))) {
+return "My achievements span the entire retail banking value chain, integrating CRM, Loyalty, and Customer Analytics:\n\n**Retail Banking Transformation:** Led multi-channel campaigns across branches, affluent segments, direct sales, and outbound teams that increased lead conversion from 1% to 20%. Drove financing sales growth from 10M KD to 80M KD through digital sales optimization and process automation. Significantly increased digital application adoption for cards and car financing, transforming the customer acquisition funnel.\n\n**CRM Excellence:** Successfully led enterprise-wide CRM Dynamics 365 implementation for 2,000+ users, modernizing from Dynamics 2011. Delivered $1M+ in cost savings through CX-driven automation initiatives across support units and call centers. Implemented advanced churn and propensity models that optimized campaign effectiveness. Enhanced omnichannel customer interactions through seamless CRM integrations, improving retention and customer lifetime value.\n\n**Loyalty Program Leadership:** Launched and scaled KFH Rewards with pan-bank integration and TAM Rewards for digital banking. Managed 200+ brand partnerships including Qatar Airways, Turkish Airlines, Alshaya Group, and Landmark Group. Successfully launched Kuwait's best credit card cashback program, increasing card spend market share significantly. Led Pearl Rewards migration during KFH-AUB merger, ensuring seamless continuity. Pioneered Kuwait's first POS redemption solution and Gen AI-based chatbot for cards.\n\n**Measurable Impact:** Reduced churn rates significantly, increased monthly active card usage substantially, designed new cashback products that expanded market share, and executed high-impact flash deals and seasonal campaigns. My integrated approach across retail banking, CRM, and loyalty creates synergies that drive sustainable revenue growth, customer engagement, and competitive differentiation.";
+}
+
+if (q.includes('leadership') || q.includes('team') || q.includes('manage')) {
+return "I bring 16+ years of proven leadership in Banking, CRM, and Loyalty management. As Senior Manager at Kuwait Finance House, I lead cross-functional teams managing comprehensive loyalty programs with 200+ brand partnerships. I've successfully managed teams through major transformations including the Pearl Rewards migration during the KFH-AUB merger, CRM Dynamics 365 implementation for 2,000+ users, and the launch of TAM Digital Bank. My leadership style combines strategic vision with operational excellence, evidenced by my certifications in Executive Leadership (IE Business School), Emerging Leaders Program (Franklin Covey), and 5th Level Leadership (Jim Collins).";
+}
+
+if (q.includes('loyalty') || q.includes('reward')) {
+return "I've architected and scaled multiple successful loyalty programs from inception to market leadership. At KFH, I launched KFH Rewards with a pan-bank approach and TAM Rewards for digital banking, managing partnerships with Mastercard, VISA, Qatar Airways, Turkish Airlines, and 200+ global brands. Previously, I led the complete transformation of Turkish Airlines' Miles & Smiles FFP, replacing the entire technology landscape including CRM, mobile apps, and partner connectivity. I also launched Kuwait's best credit card cashback program and pioneered the first POS redemption solution in Kuwait. My Certified Loyalty Marketing Professional credential underscores this expertise.";
+}
+
+if (q.includes('revenue') || q.includes('growth') || q.includes('market share') || q.includes('financial')) {
+return "I have a strong track record of driving measurable financial impact. At KFH, I increased card spend market share significantly, reduced churn rates, and boosted monthly active card usage through strategic initiatives. In my CRM role, I led campaigns that improved financing sales from 10M KD to 80M KD and delivered $1M+ in cost savings through CX-driven automation. I increased lead conversion rates from 1% to 20% through optimized multi-channel campaigns. My expertise in Customer Lifetime Value modeling, real-time pricing tools, and predictive analytics ensures data-driven decisions that maximize ROI and sustainable growth.";
+}
+
+if (q.includes('digital') || q.includes('technology') || q.includes('transformation')) {
+return "I'm a proven digital transformation leader. I spearheaded the launch of Seninbankan.com, Turkey's second digital bank and first Islamic digital bank, and led TAM Digital Bank's loyalty program launch in Kuwait. I've successfully implemented Apple Pay, Gen AI-based chatbots for cards, POS redemption solutions, and CRM Dynamics 365 for 2,000+ users. My technical proficiency spans MS Power BI, SQL, SAS Enterprise Guide, SPSS Modeler, and predictive analytics platforms. I hold certifications in Design Thinking, Blockchain, and SAS Certified Predictive Modeler, enabling me to bridge business strategy with cutting-edge technology.";
+}
+
+if (q.includes('partner') || q.includes('stakeholder') || q.includes('collaboration')) {
+return "Strategic partnership management is core to my success. I've built and managed high-value relationships with Mastercard, VISA, Qatar Airways, Turkish Airlines, Alshaya Group, Landmark Group, and Farfetch, overseeing a loyalty marketplace with 200+ brands. I've successfully negotiated and launched cobrand partnerships, executed always-on campaigns with Mastercard, and managed BTL campaigns throughout the year. My Advanced Negotiation Skills certification complements my ability to create win-win partnerships that enhance customer value propositions while driving mutual business growth.";
+}
+
+if (q.includes('analytic') || q.includes('data') || q.includes('insight')) {
+return "I'm deeply experienced in leveraging analytics for strategic decision-making. I've led advanced analytics initiatives including churn modeling, propensity modeling, cross-sell optimization, and customer behavioral segmentation. I designed Customer Lifetime Value-based pricing tools and developed Next Best Offer models for retail customers. My technical skills include SAS Enterprise Guide, SAS Miner, SPSS Modeler, MS Power BI, and SQL. I hold a SAS Certified Predictive Modeler credential and completed Data Analytics for Leaders at Ivey Business School. I translate complex data into actionable insights that drive customer engagement and business outcomes.";
+}
+
+if (q.includes('education') || q.includes('qualification') || q.includes('phd') || q.includes('degree') || q.includes('study') || q.includes('academic')) {
+return "My educational foundation is built on top-tier Turkish institutions combined with global executive programs:\n\n**PhD in Marketing Management** (Istanbul Haliç University, 2017): My doctoral thesis 'An Evaluation of Cause-Related Marketing and a Scale Development Application' developed a comprehensive framework for emotional engagement in marketing—directly applicable to loyalty program design and customer relationship strategies. This research, published in the Journal of Life Economics, provides scientific rigor to my approach in building customer-centric loyalty solutions.\n\n**Bachelor's in Management Engineering** (Istanbul Technical University, 2009): ITU is consistently ranked as one of Turkey's most prestigious universities and the leading technical institution in the country. My Management Engineering degree from ITU provided a strong foundation in quantitative analysis, operations optimization, and strategic decision-making—essential skills that underpin my data-driven approach to CRM and loyalty management.\n\n**MBA in Finance** (Istanbul Bilgi University, 2012): My thesis 'Global Capital Flows on Turkish Economy and a VAR Analysis on Economic Growth' strengthened my financial acumen and economic modeling capabilities, crucial for understanding customer lifetime value and revenue optimization.\n\n**Executive Education**: IE Business School (Business Leadership Program, 2024), Ivey Business School (Data Analytics for Leaders, 2025), Franklin Covey (Emerging Leaders Program, 2022).\n\n**Professional Certifications**: Certified Loyalty Marketing Professional, PMP, SAS Certified Predictive Modeler.\n\nThis combination of rigorous academic training from Turkey's elite institutions with practical global executive education positions me to lead strategic initiatives with both theoretical depth and practical execution excellence.";
+}
+
+if (q.includes('experience') || q.includes('background') || q.includes('career')) {
+return "I bring 16+ years of progressive leadership across Banking, Airlines, and Financial Services. My career spans Kuwait Finance House (2018-present) as Senior Manager of CRM and Card Loyalty, Turkish Airlines as CRM & Loyalty Project Manager, and Kuwait Turkish Participation Bank in strategic and analytics leadership roles. I've worked in Kuwait, Turkey, and have multicultural experience managing international teams. I'm fluent in English and Turkish, with advanced Arabic and intermediate German, enabling effective communication across diverse markets. I've spoken at international conferences including Seamless Saudi Arabia and CEM Summit Dubai.";
+}
+
+if (q.includes('campaign') || q.includes('marketing')) {
+return "I've designed and executed high-impact, data-driven campaigns across multiple channels. At KFH, I led multi-channel retail banking campaigns across branches, affluent segments, direct sales, and digital channels, boosting lead conversion from 1% to 20%. I've executed flash deals, seasonal campaigns, buy-out strategies, and win-back initiatives that significantly increased customer engagement and transaction growth. My campaigns leverage customer segmentation, predictive modeling, and real-time marketing automation. I manage SMS, email, and digital marketing campaigns that optimize customer lifecycle engagement while maximizing ROI.";
+}
+
+if (q.includes('customer experience') || q.includes('cx') || q.includes('engagement')) {
+return "Customer-centricity drives everything I do. I've delivered $1M+ in cost savings through CX-driven automation for support units and call centers, streamlining complaint management and retention strategies. I design customer journey mapping, conduct comprehensive customer research, and lead design thinking workshops to create segment-based service models. I've developed youth and women banking concepts, implemented omnichannel CRM integrations, and created lifecycle engagement strategies that reduce churn and increase customer satisfaction. My approach combines quantitative analytics with emotional intelligence to build lasting customer relationships.";
+}
+
+if (q.includes('project') || q.includes('implementation')) {
+return "I'm PMP-certified with extensive experience managing complex, enterprise-scale projects. Notable achievements include leading the Turkish Airlines Miles & Smiles complete technology transformation (software, hardware, CRM, mobile apps, partner portal, and database migration), CRM Dynamics 365 implementation for 2,000+ users, Pearl Rewards migration for KFH-AUB merger, TAM Digital Bank launch, and Apple Pay integration. I excel at managing multinational teams, aligning business requirements, conducting testing and training, and ensuring successful go-lives while maintaining business continuity and operational risk management standards.";
+}
+
+if (q.includes('innovation') || q.includes('creative') || q.includes('new')) {
+return "Innovation is central to my approach. I've pioneered several industry-firsts including Kuwait's first POS redemption solution, Gen AI-based chatbot for cards, and the best credit card cashback program in Kuwait. I launched Turkey's first Islamic digital bank (Seninbankan.com) and developed innovative digital platforms like Saglamaltin.com.tr for gold investors and Saleplus.com.tr for credit card offers. I leverage emerging technologies including blockchain, artificial intelligence, and predictive analytics to create differentiated customer experiences. My Design Thinking certification and ESG solution development demonstrate commitment to forward-thinking, sustainable innovation.";
+}
+
+if (q.includes('why') || q.includes('value') || q.includes('bring') || q.includes('offer')) {
+return "I offer a unique combination of strategic vision, proven execution, and measurable results. With a PhD in Marketing, MBA in Finance, and 16+ years leading CRM, Loyalty, and Digital Banking initiatives, I bring both academic rigor and practical expertise. I've consistently delivered: significant market share growth, reduced churn rates, $1M+ cost savings, and successful large-scale transformations. My multicultural experience, fluency in multiple languages, and international certifications enable me to lead diverse teams and navigate complex markets. I translate customer insights into revenue-generating strategies, combining data analytics with emotional intelligence to drive sustainable business growth and competitive differentiation.";
+}
+
+if (q.includes('achievement') || q.includes('accomplish') || q.includes('success')) {
+return "Key achievements include: Successfully launching KFH Rewards and TAM Rewards with pan-bank integration; Leading Turkish Airlines' complete Miles & Smiles FFP transformation; Increasing financing sales from 10M KD to 80M KD; Delivering $1M+ in cost savings through automation; Improving lead conversion from 1% to 20%; Launching Kuwait's best credit card cashback program; Managing 200+ brand partnerships including Qatar Airways and Turkish Airlines; Pioneering Kuwait's first POS redemption solution; Successfully migrating Pearl Rewards during KFH-AUB merger; Launching Turkey's first Islamic digital bank; Implementing CRM Dynamics 365 for 2,000+ users; Speaking at international conferences; and publishing research in leading journals.";
+}
+
+if (q.includes('certification') || q.includes('training')) {
+return "I maintain cutting-edge expertise through continuous learning: Executive Leadership (IE Business School 2024), Data Analytics for Leaders (Ivey Business School 2025), Certified Loyalty Marketing Professional (The Loyalty Academy 2022), Franklin Covey Emerging Leaders Program (2022), PMP Project Management (PMI 2017), SAS Certified Predictive Modeler (2018), Advanced Negotiation Skills (Scottwork 2021), Design Thinking (Mastercard 2019), Change Management (Harvard Business Publishing 2020), Blockchain Certificate (2019), 5th Level Leadership/Jim Collins (2015), and People Management (Gravity Business Advisory 2022). These credentials ensure I bring best-in-class practices to executive leadership.";
+}
+
+return "Based on my 16+ years of experience, I bring comprehensive expertise in CRM, Loyalty Programs, Digital Banking, Customer Analytics, and Strategic Leadership. I've successfully led major transformations at Kuwait Finance House and Turkish Airlines, delivering measurable results in revenue growth, market share expansion, and customer engagement. My PhD in Marketing, combined with executive certifications from IE Business School, Franklin Covey, and my PMP credential, positions me to drive strategic initiatives that create competitive advantage. Could you please specify which aspect you'd like to explore further: leadership experience, loyalty program achievements, digital transformation, analytics expertise, or strategic partnerships?";
+};
+
+const handleSend = () => {
+if (!input.trim()) return;
+
+const userMessage = { type: 'user', text: input };
+setMessages(prev => [...prev, userMessage]);
+setInput('');
+setIsTyping(true);
+
+setTimeout(() => {
+const botResponse = {
+type: 'bot',
+text: generateResponse(input)
+};
+setMessages(prev => [...prev, botResponse]);
+setIsTyping(false);
+}, 1000);
+};
+
+const handleQuickQuestion = (question) => {
+setInput(question);
+};
+
+return (
+<div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-4">
+<div className="max-w-4xl mx-auto">
+<div className="bg-white rounded-t-2xl shadow-lg p-6 border-b border-gray-200">
+<div className="flex items-start gap-4">
+<div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+YA
+</div>
+<div className="flex-1">
+<h1 className="text-2xl font-bold text-gray-900">Dr. Yakup Akgül, PhD</h1>
+<p className="text-gray-600 mt-1">Senior Manager - Card Loyalty & Rewards | Kuwait Finance House</p>
+<div className="flex gap-4 mt-2 text-sm text-gray-500">
+<span>📧 ykpakgl@gmail.com</span>
+<span>📱 +96597474558</span>
+</div>
+<p className="text-sm text-indigo-600 mt-2 font-medium">16+ Years | CRM & Loyalty | Digital Banking | Customer Analytics</p>
+</div>
+</div>
+</div>
+
+<div className="bg-white border-b border-gray-200 p-4">
+<p className="text-sm text-gray-600 mb-3 font-medium">Quick Questions:</p>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+{quickQuestions.map((q, idx) => (
+<button
+key={idx}
+onClick={() => handleQuickQuestion(q.text)}
+className="flex items-center gap-2 p-3 bg-gradient-to-r from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 rounded-lg text-left text-sm text-gray-700 transition-all border border-blue-200 hover:border-blue-300"
+>
+<q.icon />
+<span>{q.text}</span>
+</button>
+))}
+</div>
+</div>
+
+<div className="bg-white shadow-lg p-6 h-96 overflow-y-auto">
+{messages.map((msg, idx) => (
+<div key={idx} className={`flex gap-3 mb-4 ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
+{msg.type === 'bot' && (
+<div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+<Bot />
+</div>
+)}
+<div className={`max-w-2xl p-4 rounded-2xl ${
+msg.type === 'user'
+? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white'
+: 'bg-gray-100 text-gray-800'
+}`}>
+<p className="text-sm leading-relaxed whitespace-pre-line">{msg.text}</p>
+</div>
+{msg.type === 'user' && (
+<div className="w-8 h-8 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
+<User />
+</div>
+)}
+</div>
+))}
+{isTyping && (
+<div className="flex gap-3 mb-4">
+<div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-blue-600 rounded-full flex items-center justify-center">
+<Bot />
+</div>
+<div className="bg-gray-100 p-4 rounded-2xl">
+<div className="flex gap-1">
+<div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
+<div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
+<div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
+</div>
+</div>
+</div>
+)}
+</div>
+
+<div className="bg-white rounded-b-2xl shadow-lg p-4">
+<div className="flex gap-2">
+<input
+type="text"
+value={input}
+onChange={(e) => setInput(e.target.value)}
+onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+placeholder="Ask about experience, achievements, qualifications..."
+className="flex-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+/>
+<button
+onClick={handleSend}
+className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg"
+>
+<Send />
+</button>
+</div>
+<p className="text-xs text-gray-500 mt-2 text-center">
+This AI assistant responds based on Dr. Yakup Akgül's actual CV and professional experience
+</p>
+</div>
+</div>
+</div>
+);
+};
+
+ReactDOM.render(<HRInterviewInterface />, document.getElementById('root'));
+</script>
+</body>
+</html>
